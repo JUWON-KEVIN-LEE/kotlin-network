@@ -1,6 +1,6 @@
 # kotlin-network
 
-### kotlin.ver httpURLConnection
+### Kotlin.ver httpURLConnection
 ```kotlin
     // kotlin code
     val connection = URL("http://localhost:9999").openConnection()
@@ -8,7 +8,7 @@
     val data = connection.getInputStream().bufferedReader().readText()
 ```
 
-### java.ver httpURLConnection
+### Java.ver httpURLConnection
 ```java
     // java code
     public HttpURLConnection getHttpConnection(String urlString) {
@@ -57,5 +57,30 @@
         }
 
         return result;
+    }
+```
+
+### Kotlin.ver Retrofit API Interface
+```kotlin
+    interface GithubApiService {
+        @GET("service/users")
+        fun search(@Query("q") query : String,
+                   @Query("page") page : Int,
+                   @Query("per_page") perPage : Int) : Observable<Result>
+
+        @POST("service/users")
+        fun postUsage(@Body postBody : String) : Call<String>
+
+        companion object Factory {
+            fun create() : GithubApiService {
+                val retrofit = Retrofit.Builder()
+                        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .baseUrl("http://api.github.com/")
+                        .build()
+
+                return retrofit.create(GithubApiService::class.java)
+            }
+        }
     }
 ```
