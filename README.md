@@ -88,12 +88,10 @@
 ### companion object ?
 Kotlin에서는 Java나 C#과 다르게 정적 메소드 선언을 할 수 없다. 
 
-(@JvmStatic를 이용해서 JVM이 지원하는 Static Method의 선언은 가능,
-
-그렇지만 대부분의 경우에는 Package Level 함수를 사용하여 문제를 해결할것을 권장)
+(@JvmStatic를 이용해서 JVM이 지원하는 Static Method의 선언은 가능, 그렇지만 대부분의 경우에는 Package Level 함수를 사용하여 문제를 해결할것을 권장)
 
 하지만 클래스를 초기화 하지 않고 내부의 코드에 접근해야 한다거나, 가령 팩토리 메소드같은 구현이 필요할 경우 
 
-##### Companion Objects 를 사용할 수 있음
+#### Companion Objects 를 사용할 수 있다.
 
-이것을사용하면 클래스를 인스턴스화하지 않고도 Java의 Static Method와 동일한 문법으로 멤버 함수를 호출하는것이 가능
+이것을사용하면 클래스를 인스턴스화하지 않고도 Java의 Static Method와 동일한 문법으로 멤버 함수를 호출하는것이 가능하다.
